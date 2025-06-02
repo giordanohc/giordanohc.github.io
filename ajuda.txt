@@ -1,6 +1,6 @@
 Arquivo de Ajuda - Super Gizmo
 
-A página principal é acessada pelo arquivo home.html
+A página principal é acessada pelo arquivo index.html
 
 Estrutura e descrição:
 
