@@ -1,0 +1,19 @@
+Arquivo de Ajuda - Super Gizmo
+
+A página principal é acessada pelo arquivo home.html
+
+Estrutura e descrição:
+
+- Cabeçalho (Header): 
+  Contém o título e o logo.
+  Abaixo há uma faixa com links de navegação: Home, Categorias de produtos e Serviços.
+  Através da faixa e do rodapé é possível acessar as diferentes partes do site.
+
+- Conteúdo Principal (Main):
+  Exibe cards centralizados na página e organizados lado a lado. Cards são usados usados para exibir as categorias, serviços e produtos.
+  Os cards possuem imagem, titulo com links e textos.
+  É usado para exibir o conteúto principal com os produtos e serviços oferecidos.
+
+- Rodapé (Footer):
+  Fica fixo na parte inferior da página.
+  Dividido em duas partes com links para navegação e informaçoes do autor
