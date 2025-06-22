@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Gizmo</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/bootstrap-icons.min.css">
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+    <header class="bg-white py-3">
+        <div class="container text-center">
+            <h1 class="d-inline text-dark display-3">Super Gizmo</h1>
+            <img src="imagens/logo.png" alt="Logo da Super Gizmo." class="img-fluid align-middle" style="height: 125px;">
+        </div>
+        <hr class="my-3">
+        <nav class="bg-light py-2">
+            <div class="container text-center">
+                <a href="#" class="nav-link-custom mx-2" data-target="home-section">Home</a>
+                <a href="#" class="nav-link-custom mx-2" data-target="categorias-section">Categorias de produtos</a>
+                <a href="#" class="nav-link-custom mx-2" data-target="servicos-section">Serviços</a>
+                <a href="#" class="nav-link-custom mx-2" data-target="cadastro-section">Cadastro de usuário</a>
+                <a href="#" class="nav-link-custom mx-2" data-target="agendamento-section">Agendamento de Serviço</a>
+                <a href="#" class="nav-link-custom mx-2" onclick="return false;">Carrinho</a>
+            </div>
+        </nav>
+        <hr class="my-3">
+    </header>
+
+    <main class="flex-grow-1 container my-4">
+        <div id="cart-feedback-message" class="alert alert-success text-center position-fixed w-75 start-50 translate-middle-x d-none" role="status" aria-live="polite" style="z-index: 1050; top: 10px;">
+            Produto adicionado ao carrinho!
+        </div>
+        <div id="cadastro-success-message" class="alert alert-success text-center position-fixed w-75 start-50 translate-middle-x d-none" role="status" aria-live="polite" style="z-index: 1050; top: 10px;">
+            Usuário cadastrado!
+        </div>
+        <div id="cadastro-error-message" class="alert alert-danger text-center position-fixed w-75 start-50 translate-middle-x d-none" role="alert" aria-live="assertive" style="z-index: 1050; top: 10px;">
+            Preencha todos os campos obrigatórios!
+        </div>
+        <div id="agendamento-success-message" class="alert alert-success text-center position-fixed w-75 start-50 translate-middle-x d-none" role="status" aria-live="polite" style="z-index: 1050; top: 10px;">
+            Agendamento realizado com sucesso!
+        </div>
+        <div id="agendamento-error-message" class="alert alert-danger text-center position-fixed w-75 start-50 translate-middle-x d-none" role="alert" aria-live="assertive" style="z-index: 1050; top: 10px;">
+            Por favor, preencha a data, hora e selecione uma opção de serviço!
+        </div>
+
+        <section id="home-section" class="content-section active">
+            <h2 class="text-center mb-4">Bem-vindo à Super Gizmo!</h2>
+            <p class="text-center">Explore nossos produtos e serviços.</p>
+        </section>
+
+        <section id="categorias-section" class="content-section d-none">
+            <h2 class="text-center mb-4">Categorias de Produtos</h2>
+            <div id="categoriasCarousel" class="carousel slide" data-bs-interval="false">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="d-flex justify-content-center flex-wrap gap-3">
+                            <div class="card product-card" style="width: 600px;">
+                                <div class="row g-0 h-100">
+                                    <div class="col-md-6 d-flex align-items-center justify-content-center p-2">
+                                        <img src="imagens/frutas.png" class="img-fluid" alt="Cesta com diversas frutas e verduras frescas, simbolizando a categoria de hortifrúti.">
+                                    </div>
+                                    <div class="col-md-6 d-flex align-items-center justify-content-center p-2">
+                                        <a href="#" class="internal-link-custom text-dark text-decoration-none fw-bold" data-target="frutas-section">Frutas e Verduras</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="d-flex justify-content-center flex-wrap gap-3">
+                            <div class="card product-card" style="width: 600px;">
+                                <div class="row g-0 h-100">
+                                    <div class="col-md-6 d-flex align-items-center justify-content-center p-2">
+                                        <img src="imagens/alimentos.png" class="img-fluid" alt="Cesta de supermercado com diversos produtos alimentícios não perecíveis como arroz, feijão e macarrão.">
+                                    </div>
+                                    <div class="col-md-6 d-flex align-items-center justify-content-center p-2">
+                                        <a href="#" class="internal-link-custom text-dark text-decoration-none fw-bold" data-target="produtos-section">Produtos Alimentícios Não Perecíveis</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="d-flex justify-content-center flex-wrap gap-3">
+                            <div class="card product-card" style="width: 600px;">
+                                <div class="row g-0 h-100">
+                                    <div class="col-md-6 d-flex align-items-center justify-content-center p-2">
+                                        <img src="imagens/higiene.png" class="img-fluid" alt="Produtos de higiene pessoal e limpeza.">
+                                    </div>
+                                    <div class="col-md-6 d-flex align-items-center justify-content-center p-2">
+                                        <a href="#" class="internal-link-custom text-dark text-decoration-none fw-bold" data-target="higiene-section">Produtos de Higiene e Limpeza</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#categoriasCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#categoriasCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </section>
+
+        <section id="servicos-section" class="content-section d-none">
+            <h2 class="text-center mb-4">Nossos Serviços</h2>
+            <div class="d-flex justify-content-center flex-wrap gap-3">
+                <div class="card product-card" style="width: 400px;">
+                    <div class="row g-0 h-100">
+                        <div class="col-md-6 d-flex align-items-center justify-content-center p-2">
+                            <img src="imagens/retirar.png" class="img-fluid" alt="Ícone de um mercado, representando o serviço de retirada no local.">
+                        </div>
+                        <div class="col-md-6 d-flex align-items-center justify-content-center p-2">
+                            <a href="#" class="internal-link-custom text-dark text-decoration-none fw-bold" data-target="retirar-section">Retirada no Local</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card product-card" style="width: 400px;">
+                    <div class="row g-0 h-100">
+                        <div class="col-md-6 d-flex align-items-center justify-content-center p-2">
+                            <img src="imagens/tele.png" class="img-fluid" alt="Ícone de uma van de entrega, simbolizando o serviço de teleentrega.">
+                        </div>
+                        <div class="col-md-6 d-flex align-items-center justify-content-center p-2">
+                            <a href="#" class="internal-link-custom text-dark text-decoration-none fw-bold" data-target="tele-section">Teleentrega</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cadastro-section" class="content-section d-none">
+            <h2 class="text-center mb-4">Cadastro de Usuário</h2>
+            <form id="cadastroForm" class="p-4 border rounded shadow-sm mx-auto" style="max-width: 700px;">
+                <h4 class="mb-3">Dados Pessoais</h4>
+                <div class="mb-3">
+                    <label for="nome" class="form-label">Nome Completo <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="nome" placeholder="Seu nome completo" required>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="cpf" class="form-label">CPF <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="cpf" placeholder="Ex: 123.456.789-00" required pattern="\d{3}\.\d{3}\.\d{3}-\d{2}">
+                        <small class="form-text text-muted">Formato: 000.000.000-00</small>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="dataNascimento" class="form-label">Data de Nascimento <span class="text-danger">*</span></label>
+                        <input type="date" class="form-control" id="dataNascimento" required>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">E-mail <span class="text-danger">*</span></label>
+                    <input type="email" class="form-control" id="email" placeholder="nome@exemplo.com" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Sexo <span class="text-danger">*</span></label><br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="sexo" id="sexoMasculino" value="masculino" required>
+                        <label class="form-check-label" for="sexoMasculino">Masculino</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="sexo" id="sexoFeminino" value="feminino">
+                        <label class="form-check-label" for="sexoFeminino">Feminino</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="sexo" id="sexoPrefiroNaoDizer" value="prefiroNaoDizer">
+                        <label class="form-check-label" for="sexoPrefiroNaoDizer">Prefiro não dizer</label>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label">Forma de Pagamento Preferencial <span class="text-danger">*</span></label><br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="pagamentoCredito" value="credito" name="formaPagamento" required>
+                        <label class="form-check-label" for="pagamentoCredito">Cartão de Crédito</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="pagamentoDebito" value="debito" name="formaPagamento">
+                        <label class="form-check-label" for="pagamentoDebito">Cartão de Débito</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="pagamentoPix" value="pix" name="formaPagamento">
+                        <label class="form-check-label" for="pagamentoPix">PIX</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="pagamentoBoleto" value="boleto" name="formaPagamento">
+                        <label class="form-check-label" for="pagamentoBoleto">Boleto</label>
+                    </div>
+                </div>
+
+                <h4 class="mb-3 mt-4">Endereço</h4>
+                <div class="mb-3">
+                    <label for="logradouro" class="form-label">Logradouro <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="logradouro" placeholder="Nome da Rua/Avenida" required>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label for="numero" class="form-label">Número <span class="text-danger">*</span></label>
+                        <input type="number" class="form-control" id="numero" placeholder="Ex: 123" required min="1">
+                    </div>
+                    <div class="col-md-8">
+                        <label for="complemento" class="form-label">Complemento</label>
+                        <input type="text" class="form-control" id="complemento" placeholder="Apto, Bloco, Casa, etc.">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="estado" class="form-label">Estado <span class="text-danger">*</span></label>
+                        <select class="form-select" id="estado" required>
+                            <option value="">Selecione...</option>
+                            <option value="AC">Acre</option>
+                            <option value="AL">Alagoas</option>
+                            <option value="AP">Amapá</option>
+                            <option value="AM">Amazonas</option>
+                            <option value="BA">Bahia</option>
+                            <option value="CE">Ceará</option>
+                            <option value="DF">Distrito Federal</option>
+                            <option value="ES">Espírito Santo</option>
+                            <option value="GO">Goiás</option>
+                            <option value="MA">Maranhão</option>
+                            <option value="MT">Mato Grosso</option>
+                            <option value="MS">Mato Grosso do Sul</option>
+                            <option value="MG">Minas Gerais</option>
+                            <option value="PA">Pará</option>
+                            <option value="PB">Paraíba</option>
+                            <option value="PR">Paraná</option>
+                            <option value="PE">Pernambuco</option>
+                            <option value="PI">Piauí</option>
+                            <option value="RJ">Rio de Janeiro</option>
+                            <option value="RN">Rio Grande do Norte</option>
+                            <option value="RS">Rio Grande do Sul</option>
+                            <option value="RO">Rondônia</option>
+                            <option value="RR">Roraima</option>
+                            <option value="SC">Santa Catarina</option>
+                            <option value="SP">São Paulo</option>
+                            <option value="SE">Sergipe</option>
+                            <option value="TO">Tocantins</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="cidade" class="form-label">Cidade <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="cidade" placeholder="Sua cidade" required>
+                    </div>
+                </div>
+
+                <div class="d-grid gap-2 mt-4">
+                    <button type="submit" class="btn btn-danger btn-lg">Cadastrar</button>
+                </div>
+            </form>
+        </section>
+
+        <section id="agendamento-section" class="content-section d-none">
+            <h2 class="text-center mb-4">Agendamento de Serviço</h2>
+            <form id="agendamentoForm" class="p-4 border rounded shadow-sm mx-auto" style="max-width: 600px;">
+                <div class="mb-3">
+                    <label for="dataAgendamento" class="form-label">Data <span class="text-danger">*</span></label>
+                    <input type="date" class="form-control" id="dataAgendamento" required>
+                </div>
+                <div class="mb-3">
+                    <label for="horaAgendamento" class="form-label">Hora <span class="text-danger">*</span></label>
+                    <input type="time" class="form-control" id="horaAgendamento" required>
+                </div>
+                <div class="mb-4">
+                    <label class="form-label">Tipo de Serviço <span class="text-danger">*</span></label><br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="tipoServico" id="servicoRetirada" value="retirada" required>
+                        <label class="form-check-label" for="servicoRetirada">Retirada no Local</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="tipoServico" id="servicoTeleentrega" value="teleentrega">
+                        <label class="form-check-label" for="servicoTeleentrega">Teleentrega</label>
+                    </div>
+                </div>
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-danger btn-lg">Agendar</button>
+                </div>
+            </form>
+        </section>
+
+        <section id="frutas-section" class="content-section d-none">
+            <h2 class="text-center mb-4">Frutas e Verduras</h2>
+            <div class="d-flex justify-content-center flex-wrap gap-3">
+                <div class="card product-card" style="width: 400px;">
+                    <div class="row g-0 h-100">
+                        <div class="col-md-6 text-center p-2 d-flex align-items-center justify-content-center">
+                            <img src="imagens/banana.png" class="img-fluid" alt="Cacho de bananas prata frescas." style="width: 200px; height: 200px;">
+                        </div>
+                        <div class="col-md-6 text-center p-2 d-flex flex-column justify-content-center">
+                            <strong class="d-block">Banana</strong>
+                            <span class="d-block">Tipo prata</span>
+                            <em class="d-block">R$10,00/kg</em>
+                            <div class="d-flex align-items-center justify-content-center mt-2">
+                                <input type="number" class="form-control w-50 me-2" value="1" min="1">
+                                <button class="btn btn-danger add-to-cart-btn">Adicionar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card product-card" style="width: 400px;">
+                    <div class="row g-0 h-100">
+                        <div class="col-md-6 text-center p-2 d-flex align-items-center justify-content-center">
+                            <img src="imagens/maca.png" class="img-fluid" alt="Uma maçã vermelhas e brilhante." style="width: 200px; height: 200px;">
+                        </div>
+                        <div class="col-md-6 text-center p-2 d-flex flex-column justify-content-center">
+                            <strong class="d-block">Maçã</strong>
+                            <span class="d-block">Tipo Fuji</span>
+                            <em class="d-block">R$10,00/kg</em>
+                            <div class="d-flex align-items-center justify-content-center mt-2">
+                                <input type="number" class="form-control w-50 me-2" value="1" min="1">
+                                <button class="btn btn-danger add-to-cart-btn">Adicionar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="produtos-section" class="content-section d-none">
+            <h2 class="text-center mb-4">Produtos Alimentícios Não Perecíveis</h2>
+            <div class="d-flex justify-content-center flex-wrap gap-3">
+                <div class="card product-card" style="width: 400px;">
+                    <div class="row g-0 h-100">
+                        <div class="col-md-6 text-center p-2 d-flex align-items-center justify-content-center">
+                            <img src="imagens/arroz.png" class="img-fluid" alt="Pacote de arroz branco." style="width: 200px; height: 200px;">
+                        </div>
+                        <div class="col-md-6 text-center p-2 d-flex flex-column justify-content-center">
+                            <strong class="d-block">Arroz</strong>
+                            <span class="d-block">Tipo branco</span>
+                            <em class="d-block">R$10,00</em>
+                            <div class="d-flex align-items-center justify-content-center mt-2">
+                                <input type="number" class="form-control w-50 me-2" value="1" min="1">
+                                <button class="btn btn-danger add-to-cart-btn">Adicionar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card product-card" style="width: 400px;">
+                    <div class="row g-0 h-100">
+                        <div class="col-md-6 text-center p-2 d-flex align-items-center justify-content-center">
+                            <img src="imagens/feijao.png" class="img-fluid" alt="Pacote de feijão." style="width: 200px; height: 200px;">
+                        </div>
+                        <div class="col-md-6 text-center p-2 d-flex flex-column justify-content-center">
+                            <strong class="d-block">Feijão</strong>
+                            <span class="d-block">Tipo carioca</span>
+                            <em class="d-block">R$10,00</em>
+                            <div class="d-flex align-items-center justify-content-center mt-2">
+                                <input type="number" class="form-control w-50 me-2" value="1" min="1">
+                                <button class="btn btn-danger add-to-cart-btn">Adicionar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="higiene-section" class="content-section d-none">
+            <h2 class="text-center mb-4">Produtos de Higiene e Limpeza</h2>
+            <div class="d-flex justify-content-center flex-wrap gap-3">
+                <div class="card product-card" style="width: 400px;">
+                    <div class="row g-0 h-100">
+                        <div class="col-md-6 text-center p-2 d-flex align-items-center justify-content-center">
+                            <img src="imagens/desinfetante.png" class="img-fluid" alt="Frasco de desinfetante com aroma de limão." style="width: 200px; height: 200px;">
+                        </div>
+                        <div class="col-md-6 text-center p-2 d-flex flex-column justify-content-center">
+                            <strong class="d-block">Desinfetante</strong>
+                            <span class="d-block">Limão</span>
+                            <em class="d-block">R$10,00</em>
+                            <div class="d-flex align-items-center justify-content-center mt-2">
+                                <input type="number" class="form-control w-50 me-2" value="1" min="1">
+                                <button class="btn btn-danger add-to-cart-btn">Adicionar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card product-card" style="width: 400px;">
+                    <div class="row g-0 h-100">
+                        <div class="col-md-6 text-center p-2 d-flex align-items-center justify-content-center">
+                            <img src="imagens/papel.png" class="img-fluid" alt="Embalagem de papel higiênico com 24 rolos." style="width: 200px; height: 200px;">
+                        </div>
+                        <div class="col-md-6 text-center p-2 d-flex flex-column justify-content-center">
+                            <strong class="d-block">Papel Higiênico</strong>
+                            <span class="d-block">12 rolos</span>
+                            <em class="d-block">R$10,00</em>
+                            <div class="d-flex align-items-center justify-content-center mt-2">
+                                <input type="number" class="form-control w-50 me-2" value="1" min="1">
+                                <button class="btn btn-danger add-to-cart-btn">Adicionar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="retirar-section" class="content-section d-none">
+            <h2 class="text-center mb-4">Retirada no Local</h2>
+            <div class="d-flex justify-content-center flex-wrap gap-3">
+                <div class="card product-card" style="width: 400px;">
+                    <div class="row g-0 h-100">
+                        <div class="col-md-6 text-center p-2 d-flex align-items-center justify-content-center">
+                            <img src="imagens/retirar.png" class="img-fluid" alt="Ícone de um mercado, representando o serviço de retirada no local." style="width: 200px; height: 200px;">
+                        </div>
+                        <div class="col-md-6 text-center p-2 d-flex flex-column justify-content-center">
+                            <strong class="d-block">Retirar no local</strong>
+                            <span class="d-block">Compre online e retire no mercado!</span>
+                            <em class="d-block">Endereço: Rua das Flores, 123</em>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tele-section" class="content-section d-none">
+            <h2 class="text-center mb-4">Teleentrega</h2>
+            <div class="d-flex justify-content-center flex-wrap gap-3">
+                <div class="card product-card" style="width: 400px;">
+                    <div class="row g-0 h-100">
+                        <div class="col-md-6 text-center p-2 d-flex align-items-center justify-content-center">
+                            <img src="imagens/tele.png" class="img-fluid" alt="Ícone de uma van de entrega, simbolizando o serviço de teleentrega." style="width: 200px; height: 200px;">
+                        </div>
+                        <div class="col-md-6 text-center p-2 d-flex flex-column justify-content-center">
+                            <strong class="d-block">Teleentrega</strong>
+                            <span class="d-block">Fazemos a entrega na sua casa!</span>
+                            <em class="d-block">Entre em contato 51 99999-9999</em>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="mt-auto bg-light py-4">
+        <div class="container d-flex justify-content-between align-items-start">
+            <div class="text-end pe-4 border-end border-dark" style="width: 50%;">
+                <strong class="d-block mb-2">Navegação:</strong>
+                <a href="#" class="nav-link-custom d-inline-block mx-1" data-target="home-section">Home</a> |
+                <a href="#" class="nav-link-custom d-inline-block mx-1" data-target="categorias-section">Categorias</a> |
+                <a href="#" class="nav-link-custom d-inline-block mx-1" data-target="servicos-section">Serviços</a> |
+                <a href="#" class="nav-link-custom d-inline-block mx-1" data-target="cadastro-section">Cadastro</a> |
+                <a href="#" class="nav-link-custom d-inline-block mx-1" data-target="agendamento-section">Agendamento</a> |
+                <a href="#" class="nav-link-custom d-inline-block mx-1" onclick="return false;">Carrinho</a>
+            </div>
+            <div class="ps-4" style="width: 50%;">
+                <strong class="d-block mb-2">Autor:</strong> Giordano H. Casaril<br>
+                <strong class="d-block">Contato:</strong> <a href="mailto:giordano.hc@outlook.com">giordano.hc@outlook.com</a><br>
+                <em class="d-block mt-1">Desenvolvido para a disciplina de Fundamentos de Sistemas Web da PUCRS</em>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const allNavigableLinks = document.querySelectorAll('[data-target]');
+            const contentSections = document.querySelectorAll('.content-section');
+            const cartFeedbackMessage = document.getElementById('cart-feedback-message');
+            const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+
+            const cadastroForm = document.getElementById('cadastroForm');
+            const cadastroSuccessMessage = document.getElementById('cadastro-success-message');
+            const cadastroErrorMessage = document.getElementById('cadastro-error-message');
+
+            const agendamentoForm = document.getElementById('agendamentoForm');
+            const agendamentoSuccessMessage = document.getElementById('agendamento-success-message');
+            const agendamentoErrorMessage = document.getElementById('agendamento-error-message');
+
+            function showSection(targetId) {
+                contentSections.forEach(section => {
+                    if (section.id === targetId) {
+                        section.classList.remove('d-none');
+                        section.classList.add('active');
+                    } else {
+                        section.classList.add('d-none');
+                        section.classList.remove('active');
+                    }
+                });
+            }
+
+            allNavigableLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetSectionId = link.getAttribute('data-target');
+                    showSection(targetSectionId);
+                });
+            });
+
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    cartFeedbackMessage.classList.remove('d-none');
+                    setTimeout(() => {
+                        cartFeedbackMessage.classList.add('d-none');
+                    }, 3000);
+                });
+            });
+
+            if (cadastroForm) {
+                cadastroForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+
+                    let allFieldsFilled = true;
+
+                    cadastroForm.querySelectorAll('input[required], select[required], textarea[required]').forEach(input => {
+                        if (input.value.trim() === '') {
+                            allFieldsFilled = false;
+                        }
+                    });
+
+                    const radioSexo = document.querySelector('input[name="sexo"]:checked');
+                    if (!radioSexo) {
+                        allFieldsFilled = false;
+                    }
+
+                    const checkboxesPagamento = document.querySelectorAll('input[name="formaPagamento"]');
+                    let oneCheckboxChecked = false;
+                    checkboxesPagamento.forEach(checkbox => {
+                        if (checkbox.checked) {
+                            oneCheckboxChecked = true;
+                        }
+                    });
+                    if (!oneCheckboxChecked) {
+                        allFieldsFilled = false;
+                    }
+
+                    if (allFieldsFilled) {
+                        cadastroSuccessMessage.classList.remove('d-none');
+                        cadastroErrorMessage.classList.add('d-none');
+                        setTimeout(() => {
+                            cadastroSuccessMessage.classList.add('d-none');
+                        }, 3000);
+                        cadastroForm.reset();
+                    } else {
+                        cadastroErrorMessage.classList.remove('d-none');
+                        cadastroSuccessMessage.classList.add('d-none');
+                        setTimeout(() => {
+                            cadastroErrorMessage.classList.add('d-none');
+                        }, 3000);
+                    }
+                });
+            }
+
+            if (agendamentoForm) {
+                agendamentoForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+
+                    const dataAgendamento = document.getElementById('dataAgendamento').value;
+                    const horaAgendamento = document.getElementById('horaAgendamento').value;
+                    const tipoServico = document.querySelector('input[name="tipoServico"]:checked');
+
+                    if (dataAgendamento && horaAgendamento && tipoServico) {
+                        agendamentoSuccessMessage.classList.remove('d-none');
+                        agendamentoErrorMessage.classList.add('d-none');
+                        setTimeout(() => {
+                            agendamentoSuccessMessage.classList.add('d-none');
+                        }, 3000);
+                        agendamentoForm.reset();
+                    } else {
+                        agendamentoErrorMessage.classList.remove('d-none');
+                        agendamentoSuccessMessage.classList.add('d-none');
+                        setTimeout(() => {
+                            agendamentoErrorMessage.classList.add('d-none');
+                        }, 3000);
+                    }
+                });
+            }
+
+            var categoriasCarousel = document.getElementById('categoriasCarousel');
+            if (categoriasCarousel) {
+                var carousel = new bootstrap.Carousel(categoriasCarousel, {
+                    interval: false
+                });
+            }
+
+            showSection('home-section');
+        });
+    </script>
+</body>
+</html>

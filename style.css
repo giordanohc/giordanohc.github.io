@@ -1,0 +1,118 @@
+body {
+    font-family: Calibri;
+}
+
+/* Custom styles for navigation links (main nav and footer) */
+.nav-link-custom {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav-link-custom:hover {
+    color: red;
+}
+
+/* Custom styles for internal links within content sections (e.g., Categorias, Serviços) */
+.internal-link-custom {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.internal-link-custom:hover {
+    color: red;
+}
+
+
+/* Product Card Styling */
+.product-card {
+    border: 5px solid red;
+    display: flex;
+    flex-direction: column;
+    min-height: 200px;
+}
+
+.product-card .row.g-0 {
+    width: 100%;
+    height: 100%;
+}
+
+.product-card .col-md-6 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.product-card img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* For the text content in product cards */
+.product-card .col-md-6.d-flex.flex-column {
+    text-align: center;
+}
+
+/* Content Section Display Control */
+.content-section {
+    display: none;
+    margin: 20px 0;
+}
+
+.content-section.active {
+    display: block;
+}
+
+/* Footer specific styles to match original appearance */
+footer {
+    background-color: #F0F0F0;
+    padding: 25px;
+}
+
+footer strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Estilo para a mensagem de feedback do carrinho */
+#cart-feedback-message {
+    background-color: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
+    font-weight: bold;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Estilo para os ícones de controle do carrossel ficarem pretos */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
+}
+/* Para o botão "Próximo", a seta é invertida no SVG */
+.carousel-control-next-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
+}
+
+/* Opcional: ajustar a cor de fundo dos botões para serem mais visíveis se necessário */
+.carousel-control-prev,
+.carousel-control-next {
+    background-color: rgba(0, 0, 0, 0.2); /* Um fundo sutil para os botões */
+    border-radius: 50%; /* Deixa os botões redondos */
+    width: 45px; /* Ajusta a largura */
+    height: 45px; /* Ajusta a altura */
+    top: 50%; /* Centraliza verticalmente */
+    transform: translateY(-50%); /* Ajuste fino para o centro */
+    opacity: 0.8; /* Torna-os ligeiramente transparentes */
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    opacity: 1; /* Aumenta a opacidade ao passar o mouse */
+    background-color: rgba(0, 0, 0, 0.4); /* Fundo mais escuro ao passar o mouse */
+}

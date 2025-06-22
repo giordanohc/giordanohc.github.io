@@ -1,0 +1,54 @@
+Arquivo de Ajuda - Super Gizmo (Fase 2)
+
+A página principal e única do site é acessada pelo arquivo index.html.
+
+O arquivo style.css armazena os estilos. As pastas css e js são as fontes do bootsrap, a pasta fonts contém os icones do bootstrap, e a pasta imagens contem os aquivos de imagens do site.
+
+
+Mudanças da Fase 1:
+
+Maior mudança foi unificar as diversas paginas para uma pagina só, aproveitando o JavaScript, fazendo com que fosse mais rapido para desenvolver, nao precisasse reescrever o mesmo código em cada página, e assim ficando um site mais fluido para o usuário navegar.
+
+No design mudei para usar a biblioteca de classes e icones do Bootstrap, trocando as tables por divs e deixando o layout mais adaptavel para cada tela, e a implementaçao do carrossel.
+
+As sessões novas da fase de formulário de cadastro e agendamento fazem o uso de Javascript para os campos e validação.
+
+
+Estrutura e Descrição:
+
+- Cabeçalho (Header): 
+
+	Contém o título e o logo.
+	
+	Abaixo há uma faixa com links de navegação: Home, Categorias de produtos, Serviços, Cadastro de usuário, Agendamento de Serviço e Carrinho.
+	
+	O cabeçalho é projetado com classes Bootstrap.
+	
+	Os links de navegação usam JavaScript para alternar as seções dentro da mesma página, sendo um aplicativo com uma única.
+
+
+- Conteúdo Principal (Main):
+
+	Organizado em seções diferentes, cada uma com um id único (home-section, categorias-section, cadastro-section), que são exibidas ou ocultadas via JavaScript conforme a navegação.
+	
+        home-section (Página Inicial): Introdução ao site.
+		
+        categorias-section (Categorias de produtos): Apresenta as principais categorias de produtos (Frutas e Verduras, Produtos Alimentícios Não Perecíveis, Produtos de Higiene e Limpeza) em um carrossel. Ao clicar em uma categoria, a seção de produtos é exibida.
+		
+        frutas-section, produtos-section, higiene-section (Páginas de Produtos): Exibem cards individuais para cada produto com imagem, nome, descrição, preço, e um campo de quantidade com botão "Adicionar".
+		
+        servicos-section (Serviços): Lista os serviços oferecidos (Retirada no Local, Teleentrega) em cards. Ao clicar em um serviço mostra os detalhes.
+		
+        retirar-section, tele-section (Páginas de Serviços): Detalhes sobre cada serviço, incluindo informações de contato ou endereço.
+		
+        cadastro-section (Cadastro de usuário): Contém um formulário completo para registro de novos usuários, com campos para dados pessoais (nome, CPF, data de nascimento, e-mail, sexo, forma de pagamento preferencial) e endereço. Inclui validação de campos obrigatórios e feedback de sucesso/erro.
+		
+        agendamento-section (Agendamento de Serviço): Apresenta um formulário para agendamento de serviços, com data, hora e tipo de serviço.
+
+
+- Rodapé (Footer):
+
+	Fica fixo na parte inferior da página.
+	
+	Dividido em duas partes com links para navegação e informaçoes do autor
+	
